@@ -19,9 +19,9 @@ jobs:
     - name: Show changed files
       run: |
          git fetch
-         git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | while read -r file; do
+         for file in $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }}); do
              echo "Changes in $file:"
-         git diff ${{ github.event.before }} ${{ github.event.after }} -- "$file"
+             git diff ${{ github.event.before }} ${{ github.event.after }} -- "$file"
          done
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
