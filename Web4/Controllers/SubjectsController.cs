@@ -70,5 +70,19 @@ namespace Web4.Controllers
             await dbContext.SaveChangesAsync();
             return Ok(subject);
         }
+        [HttpDelete]
+        [Route("id:Guid")]
+        [ValidateModel]
+        public async Task<IActionResult> deleteSubject([FromRoute] Guid id)
+        {
+            var result = await dbContext.Subjects.FirstOrDefaultAsync(x=>x.Id == id);
+            if (result == null)
+            {
+                return Ok(null);
+            }
+            dbContext.Subjects.Remove(result);
+            await dbContext.SaveChangesAsync() ;
+            return Ok(result);
+        }
     }
 }
