@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include=".github\workflows\main.yml" />
+    <None Include=".github\workflows\trung-web5.yml" />
   </ItemGroup>
 
 </Project>
