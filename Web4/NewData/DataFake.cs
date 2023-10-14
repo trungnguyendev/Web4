@@ -8,5 +8,6 @@
         public string name2 { get; set; }
         public int age2 { get; set; }
         public int id2 { get; set; }
+        public string myName { get; set; }
     }
 }
