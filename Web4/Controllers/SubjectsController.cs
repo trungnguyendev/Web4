@@ -84,5 +84,13 @@ namespace Web4.Controllers
             await dbContext.SaveChangesAsync() ;
             return Ok(result);
         }
+        [HttpGet]
+        [Route("id:Guid")]
+        public async Task<IActionResult> getById([FromRoute] Guid id)
+        {
+            var result = await dbContext.Subjects.FirstOrDefaultAsync(x => x.Id == id);
+            if(result == null) { return Ok(null); }
+            return Ok(result);
+        }
     }
 }
