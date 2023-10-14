@@ -16,8 +16,13 @@ jobs:
     - uses: actions/checkout@v3
       with:
          fetch-depth: 0
-    - name: Get changes
-      run: git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
+    - name: Show changed files
+      run: |
+         git fetch
+         git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | while read -r file; do
+             echo "Changes in $file:"
+         git diff ${{ github.event.before }} ${{ github.event.after }} -- "$file"
+         done
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
