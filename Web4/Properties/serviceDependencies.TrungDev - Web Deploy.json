@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/TrungDev/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsWeb4AuthConnectionStrin_192FFA4EF2",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sql-server-web4/databases/web4",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Web4AuthConnectionStrings",
+      "dynamicId": null
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/TrungDev/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsWeb4ConnectionStrings_A03E6D96A9",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sql-server-web4/databases/web4",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Web4ConnectionStrings",
+      "dynamicId": null
+    }
+  }
+}
