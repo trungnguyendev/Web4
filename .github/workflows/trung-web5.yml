@@ -14,19 +14,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Get changed files
-      id: changed-files
-      run: |
-          if [ ${{ github.event_name }} == 'pull_request' ]; then
-            echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_ENV
-          else
-            echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_ENV
-          fi
-    - name: List changed files
-      run: |
-          for file in ${{ env.changed_files }}; do
-            echo "$file was changed"
-          done
+      with:
+         fetch-depth: 0
+    - name: Get changes
+      run: git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
