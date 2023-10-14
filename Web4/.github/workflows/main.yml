@@ -1,4 +1,4 @@
-name: ASP.NET Core CI/CD
+﻿name: ASP.NET Core CI/CD
 
 on:
   push:
@@ -27,3 +27,5 @@ jobs:
         app-name: 'your-app-name'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+    - name: Xem phần code đã thay đổi
+      run: git diff $GITHUB_SHA_BEFORE...$GITHUB_SHA
