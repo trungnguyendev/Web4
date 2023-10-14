@@ -17,8 +17,11 @@ jobs:
     - name: Get changed files
       id: changed-files
       run: |
-          if: ${{ github.event_name == 'pull_request' }}
-          run: echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_ENV
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_ENV
+          else
+            echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_ENV
+          fi
     - name: List changed files
       run: |
           for file in ${{ env.changed_files }}; do
