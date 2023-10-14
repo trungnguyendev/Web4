@@ -127,13 +127,13 @@ namespace Web4.Controllers
         }
         [HttpGet]
         [Route("account")]
-        [Authorize(Roles = ("Writer,Reader"))]
-        public async Task<IActionResult> getAccount()
+        [Authorize(Roles = ("Writer"))]
+        public async Task<IActionResult> getMyAccount()
         {
             var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             var result = new TokenDto
             {
-                statusCode = 200,
+                statusCode = 201,
                 message = "đăng nhập thành công",
                 access_token = token,
                 role = User.FindAll(ClaimTypes.Role)
